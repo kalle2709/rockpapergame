@@ -121,7 +121,7 @@ const Layout = () => {
                 <Typography variant = {'h6'} style = {{fontWeight: 700}}>Computer Move: <span className = 'moveText' style = {{color: 'green'}}> {computerMove} </span></Typography>
                 <Stack direction = 'row' spacing={3}>
                     <Typography variant = {'h5'} style = {{fontWeight: 700, color: 'Green'}}>{`Wins: ${resultObject.wins}`}</Typography>
-                    <Typography variant = {'h5'} style = {{fontWeight: 700, color: 'Brown'}}>{`Looses: ${resultObject.looses}`}</Typography>
+                    <Typography variant = {'h5'} style = {{fontWeight: 700, color: 'Brown'}}>{`Defeats: ${resultObject.looses}`}</Typography>
                 </Stack>
             </Stack>
         }
