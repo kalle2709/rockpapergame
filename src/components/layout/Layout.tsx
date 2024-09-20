@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import rock from '../../images/rock.jpeg'
 import paper from '../../images/paper.png'
 import scissor from '../../images/scissor.png'
@@ -25,7 +25,7 @@ const Layout = () => {
         wins : 0,
         looses: 0
     })
-
+  
     const computerMoveHandler = (playerMoveIs: string) =>
     {
         setPlayerMove(playerMoveIs);
@@ -45,11 +45,9 @@ const Layout = () => {
             setRockBtnClicked(false);
             setPaperBtnClicked(false);
             setScissorBtnClicked(true);
-        }
-        
-        
-        if(moveNum >= 1 && moveNum < 2.33){
-           
+        }        
+        if(moveNum >= 0 && moveNum < 2.33){
+                    
             setComputerMove('Rock')
 
         }
@@ -59,9 +57,19 @@ const Layout = () => {
         }
         else{
             setComputerMove('Scissors')
-        }
+        }       
         
-        if(playerMoveIs === computerMove){
+    }
+
+    useEffect(() => {
+        if (playerMove && computerMove) {
+          winHandler(playerMove, computerMove);
+        }
+      }, [playerMove, computerMove]);
+
+    const winHandler = (playerMoveIs: string, computerMove: string) =>
+    {
+        if(playerMove === computerMove){
             setResultText("Congrats! You Won")
             setResultObj(prevState => ({
                 ...prevState, 
@@ -77,6 +85,7 @@ const Layout = () => {
             }))
 
         }      
+
     }
 
 
